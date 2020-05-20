@@ -14,7 +14,7 @@ import java.util.Map;
  * @author PengFei
  * @since 1.0.0
  */
-public final class LApplication {
+public final class YApplication {
 
 	private static final Map<String,String> PROPERTIES = new HashMap<String, String>();
 

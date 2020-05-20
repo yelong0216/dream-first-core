@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.yelong.dream.first.core.Labbol;
+import org.yelong.dream.first.core.DreamFirstCore;
 import org.yelong.dream.first.core.platform.dict.service.DictCommonService;
 import org.yelong.dream.first.core.platform.dict.service.impl.DictCommonServiceImpl;
 import org.yelong.dream.first.core.platform.login.service.LoginSessionCommonService;
@@ -46,13 +46,13 @@ import org.yelong.dream.first.core.platform.user.service.impl.UserRoleCommonServ
  * @since 1.0.0
  */
 @Configuration
-@ConditionalOnProperty(prefix = PlatformConfiguration.LABBOL_PLATFORM_PROPERTIES_PREFIX,
+@ConditionalOnProperty(prefix = PlatformConfiguration.DREAM_FIRST_PROPERTIES_PREFIX,
 name = "auto",
 havingValue = "true",
 matchIfMissing = true)
 public class PlatformConfiguration {
 
-	public static final String LABBOL_PLATFORM_PROPERTIES_PREFIX = Labbol.LABBOL_PROPERTIES_PREFIX+".platform";
+	public static final String DREAM_FIRST_PROPERTIES_PREFIX = DreamFirstCore.DREAM_FIRST_PROPERTIES_PREFIX+".platform";
 	
 	//===========================字典============================
 	
