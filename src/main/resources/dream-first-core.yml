@@ -1,0 +1,8 @@
+dreamfirst:
+ #是否启用缓存。默认false
+ cache: true
+ platform:
+  #是否注入平台中默认的管理器、service等。默认true
+  auto: true
+  #平台debug。这些debug信息是存放到库中的。默认false
+  debug: true

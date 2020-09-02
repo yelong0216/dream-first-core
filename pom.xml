@@ -4,9 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.yelong0216.dream.first</groupId>
 	<artifactId>dream-first-core</artifactId>
-	<version>1.0.0</version>
+	<version>2.0.0</version>
 	<name>dream-first-core</name>
-	<description>整套SSM架构整合</description>
+	<description>dreamfirst框架核心</description>
 	<url>https://github.com/yelong0216/dream-first-core.git</url>
 	<licenses>
 		<license>
@@ -16,15 +16,18 @@
 	</licenses>
 	<developers>
 		<developer>
-			<name>彭飞</name>
-			<email>17601085125@163.com</email>
+			<name>yelong</name>
+			<email>yelong010216@163.com</email>
 		</developer>
 	</developers>
 	<scm>
 		<url>https://github.com/yelong0216/dream-first-core</url>
 	</scm>
 	<properties>
-		<yelong-mybatis-spring-boot-autoconfigure.version>1.1.0</yelong-mybatis-spring-boot-autoconfigure.version>
+		<maven.test.skip>true</maven.test.skip>
+		<yelong.version>[2.1.0,2.2.0)</yelong.version>
+		<yelong-mybatis-spring-boot-autoconfigure.version>${yelong.version}</yelong-mybatis-spring-boot-autoconfigure.version>
+		<yelong-security.version>1.1.0</yelong-security.version>
 		<ognl.version>3.1.10</ognl.version>
 		<gson.version>2.8.5</gson.version>
 		<spring.version>5.1.5.RELEASE</spring.version>
@@ -32,6 +35,7 @@
 		<spring-context-support.version>${spring.version}</spring-context-support.version>
 		<slf4j-api.version>1.7.25</slf4j-api.version>
 		<bcprov-jdk15on.version>1.56</bcprov-jdk15on.version>
+		<jedis-version>2.8.2</jedis-version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -39,12 +43,21 @@
 			<artifactId>yelong-mybatis-spring-boot-autoconfigure</artifactId>
 			<version>${yelong-mybatis-spring-boot-autoconfigure.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.github.yelong0216</groupId>
+			<artifactId>yelong-compatibility</artifactId>
+			<version>${yelong.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.yelong0216</groupId>
+			<artifactId>yelong-security</artifactId>
+			<version>${yelong-security.version}</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring-webmvc.version}</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -57,12 +70,6 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j-api.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.bouncycastle</groupId>
-			<artifactId>bcprov-jdk15on</artifactId>
-			<version>${bcprov-jdk15on.version}</version>
-			<scope>provided</scope>
-		</dependency>
 		<!-- https://mvnrepository.com/artifact/ognl/ognl -->
 		<dependency>
 			<groupId>ognl</groupId>
@@ -74,6 +81,25 @@
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>${gson.version}</version>
+		</dependency>
+		<!-- jedis -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>${jedis-version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.7.0-M1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.47</version><!--$NO-MVN-MAN-VER$ -->
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<profiles>

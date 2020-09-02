@@ -1,3 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-org.yelong.dream.first.core.configuration.PlatformConfiguration,\
-org.yelong.dream.first.core.configuration.DreamFirstCoreConfiguration
+dream.first.core.configuration.DreamFirstPlatformConfiguration,\
+dream.first.core.configuration.DreamFirstCoreConfiguration,\
+dream.first.core.configuration.DreamFirstCacheConfiguration
