@@ -57,14 +57,17 @@ public class ModifyModelServiceInterceptor implements Interceptor {
 			BaseModelable baseModelable = (BaseModelable) model;
 			Date createTime = Dates.nowDate();
 			String userName = SYSTEM_ADMIN_USER_NAME;
-			baseModelable.setUpdateTime(createTime);
 			CurrentLoginUserInfo currentLoginUserInfo = CurrentLoginUserInfoHolder.currentLoginUserInfo();
 			if (null != currentLoginUserInfo) {
 				if (null != currentLoginUserInfo.getUser()) {
 					userName = currentLoginUserInfo.getUser().getUsername();
 				}
 			}
+			// 不允许设置创建人和创建时间
+			baseModelable.setCreateTime(null);
+			baseModelable.setCreator(null);
 			baseModelable.setUpdator(userName);
+			baseModelable.setUpdateTime(createTime);
 		}
 		return invocation.proceed();
 	}

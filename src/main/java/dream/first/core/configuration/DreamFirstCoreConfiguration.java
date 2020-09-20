@@ -22,6 +22,8 @@ import org.yelong.core.model.ModelConfiguration;
 import org.yelong.core.model.manage.ModelManager;
 import org.yelong.core.model.property.ModelProperty;
 import org.yelong.core.model.sql.SqlModelResolver;
+import org.yelong.http.client.DefaultHttpClient;
+import org.yelong.http.client.HttpClient;
 import org.yelong.support.orm.mybaits.mapper.MyBatisBaseDataBaseOperation;
 
 import dream.first.core.handler.interceptor.DefaultInterceptorConfiguration;
@@ -142,4 +144,12 @@ public class DreamFirstCoreConfiguration {
 		};
 	}
 
+	// ===========================http===========================
+
+	@Bean
+	@ConditionalOnMissingBean(HttpClient.class)
+	public HttpClient httpClient() {
+		return new DefaultHttpClient();
+	}
+	
 }

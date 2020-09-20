@@ -20,7 +20,7 @@ public abstract class BaseMapModel extends MapModel implements BaseMapModelable 
 	private static final long serialVersionUID = -4448830529149248472L;
 
 	public BaseMapModel() {
-		this(KeyStoreMode.UPPER);
+		this(KeyStoreMode.LOWER);
 	}
 
 	public BaseMapModel(KeyStoreMode keyStoreMode) {
