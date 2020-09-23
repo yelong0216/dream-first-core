@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.yelong0216.dream.first</groupId>
 	<artifactId>dream-first-core</artifactId>
-	<version>2.0.1</version>
+	<version>2.0.2</version>
 	<name>dream-first-core</name>
 	<description>dreamfirst框架核心</description>
 	<url>https://github.com/yelong0216/dream-first-core.git</url>

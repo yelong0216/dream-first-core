@@ -10,3 +10,7 @@
 
 	BaseMapModel默认大小写由大写改为小写
 	默认注入HttpClient对象到Spring容器中
+	
+2020-09-23 v->2.0.2
+	
+	更新模型服务拦截器

@@ -21,6 +21,7 @@ import org.yelong.core.jdbc.sql.factory.SqlFragmentFactory;
 import org.yelong.core.model.ModelConfiguration;
 import org.yelong.core.model.manage.ModelManager;
 import org.yelong.core.model.property.ModelProperty;
+import org.yelong.core.model.service.ModelServiceInterceptor;
 import org.yelong.core.model.sql.SqlModelResolver;
 import org.yelong.http.client.DefaultHttpClient;
 import org.yelong.http.client.HttpClient;
@@ -83,7 +84,7 @@ public class DreamFirstCoreConfiguration {
 	 * @return 保存拦截器
 	 */
 	@Bean
-	public Interceptor saveModelServiceInterceptor() {
+	public ModelServiceInterceptor saveModelServiceInterceptor() {
 		return new SaveModelServiceInterceptor();
 	}
 
@@ -93,7 +94,7 @@ public class DreamFirstCoreConfiguration {
 	 * @return 修改拦截器
 	 */
 	@Bean
-	public Interceptor modifyModelServiceInterceptor() {
+	public ModelServiceInterceptor modifyModelServiceInterceptor() {
 		return new ModifyModelServiceInterceptor();
 	}
 
@@ -109,8 +110,11 @@ public class DreamFirstCoreConfiguration {
 	@ConditionalOnBean(Interceptor.class)
 	@ConditionalOnSingleCandidate(DreamFirstModelService.class)
 	public DreamFirstModelService dreamFirstModelServiceProxy(DreamFirstModelService dreamFirstModelService,
-			ObjectProvider<List<Interceptor>> interceptorProvider) {
-		List<Interceptor> interceptors = interceptorProvider.getIfAvailable();
+			ObjectProvider<List<ModelServiceInterceptor>> interceptorProvider) {
+		List<ModelServiceInterceptor> interceptors = interceptorProvider.getIfAvailable();
+		if (null == interceptors) {
+			return dreamFirstModelService;
+		}
 		InterceptorChain interceptorChain = new InterceptorChain();
 		interceptorChain.addInterceptor(interceptors);
 		Class<?> targetClass = AopUtils.getTargetClass(dreamFirstModelService);
@@ -151,5 +155,5 @@ public class DreamFirstCoreConfiguration {
 	public HttpClient httpClient() {
 		return new DefaultHttpClient();
 	}
-	
+
 }

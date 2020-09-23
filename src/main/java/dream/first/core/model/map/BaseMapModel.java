@@ -3,8 +3,6 @@
  */
 package dream.first.core.model.map;
 
-import java.util.Date;
-
 import org.yelong.commons.util.map.CaseInsensitiveMapUtils.KeyStoreMode;
 import org.yelong.core.model.Modelable;
 import org.yelong.core.model.map.MapModel;
@@ -25,36 +23,6 @@ public abstract class BaseMapModel extends MapModel implements BaseMapModelable 
 
 	public BaseMapModel(KeyStoreMode keyStoreMode) {
 		super(keyStoreMode);
-	}
-
-	@Override
-	public String getId() {
-		return getString(ID);
-	}
-
-	@Override
-	public String getCreator() {
-		return getString(CREATOR);
-	}
-
-	@Override
-	public Date getCreateTime() {
-		return getDate(CREATETIME);
-	}
-
-	@Override
-	public String getUpdator() {
-		return getString(UPDATOR);
-	}
-
-	@Override
-	public Date getUpdateTime() {
-		return getDate(UPDATETIME);
-	}
-
-	@Override
-	public String getState() {
-		return getString(STATE);
 	}
 
 }

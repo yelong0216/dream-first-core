@@ -6,12 +6,12 @@ package dream.first.core.model.interceptor;
 import java.util.Date;
 
 import org.yelong.commons.util.Dates;
-import org.yelong.core.interceptor.Interceptor;
 import org.yelong.core.interceptor.Intercepts;
 import org.yelong.core.interceptor.Invocation;
 import org.yelong.core.interceptor.Signature;
 import org.yelong.core.model.Modelable;
 import org.yelong.core.model.service.ModelService;
+import org.yelong.core.model.service.ModelServiceInterceptor;
 
 import dream.first.core.login.CurrentLoginUserInfo;
 import dream.first.core.login.CurrentLoginUserInfoHolder;
@@ -26,7 +26,7 @@ import dream.first.core.utils.IDUtils;
  */
 @Intercepts({ @Signature(type = ModelService.class, method = "save", args = Modelable.class),
 		@Signature(type = ModelService.class, method = "saveSelective", args = Modelable.class) })
-public class SaveModelServiceInterceptor implements Interceptor {
+public class SaveModelServiceInterceptor implements ModelServiceInterceptor {
 
 	public static final String SYSTEM_ADMIN_USER_NAME = "system";
 

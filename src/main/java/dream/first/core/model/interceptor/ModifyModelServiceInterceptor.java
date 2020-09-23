@@ -6,13 +6,13 @@ package dream.first.core.model.interceptor;
 import java.util.Date;
 
 import org.yelong.commons.util.Dates;
-import org.yelong.core.interceptor.Interceptor;
 import org.yelong.core.interceptor.Intercepts;
 import org.yelong.core.interceptor.Invocation;
 import org.yelong.core.interceptor.Signature;
 import org.yelong.core.jdbc.sql.condition.ConditionSqlFragment;
 import org.yelong.core.model.Modelable;
 import org.yelong.core.model.service.ModelService;
+import org.yelong.core.model.service.ModelServiceInterceptor;
 import org.yelong.core.model.service.SqlModelService;
 import org.yelong.core.model.service.SqlModelServiceAdapter;
 import org.yelong.core.model.sql.SqlModel;
@@ -45,7 +45,7 @@ import dream.first.core.model.BaseModelable;
 				ConditionSqlFragment.class }),
 		@Signature(type = SqlModelServiceAdapter.class, method = "modifySelectiveByCondition", args = { Modelable.class,
 				ConditionSqlFragment.class }), })
-public class ModifyModelServiceInterceptor implements Interceptor {
+public class ModifyModelServiceInterceptor implements ModelServiceInterceptor {
 
 	public static final String SYSTEM_ADMIN_USER_NAME = "system";
 
