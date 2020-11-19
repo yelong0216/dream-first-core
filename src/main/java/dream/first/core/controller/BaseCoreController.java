@@ -4,12 +4,9 @@
 package dream.first.core.controller;
 
 import org.yelong.core.annotation.Nullable;
-import org.yelong.support.spring.mvc.controller.AbstractSpringMvcController;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import dream.first.core.gson.GsonSupplier;
+import dream.first.base.controller.DreamFirstBaseCoreController;
+import dream.first.base.userauth.CurrentAuthUserInfoHolder;
 import dream.first.core.login.CurrentLoginUserInfo;
 import dream.first.core.login.CurrentLoginUserInfoHolder;
 import dream.first.core.platform.org.model.Org;
@@ -22,44 +19,14 @@ import dream.first.core.platform.user.model.User;
  * 
  * @since 1.0.0
  */
-public abstract class BaseCoreController extends AbstractSpringMvcController {
-
-	/**
-	 * 使用默认的Gson将对象转换转换为JSON
-	 * 
-	 * @param obj 对象
-	 * @return JSON格式的字符串
-	 * @see #getGson()
-	 */
-	protected String toJson(Object obj) {
-		Gson gson = getGson();
-		return gson.toJson(obj);
-	}
-
-	/**
-	 * @return 默认的Gson
-	 * @see GsonSupplier#getDefaultGson()
-	 */
-	protected Gson getGson() {
-		return GsonSupplier.getDefaultGson();
-	}
-
-	/**
-	 * @return 默认Gson构建器
-	 * @see GsonSupplier#createGsonBuilder()
-	 */
-	protected GsonBuilder createDefaultGsonBuilder() {
-		return GsonSupplier.createGsonBuilder();
-	}
-
-	// ==================================================当前登录/请求人信息==================================================
+public abstract class BaseCoreController extends DreamFirstBaseCoreController {
 
 	/**
 	 * @return 当前登录/请求人的相关信息
 	 * @see CurrentLoginUserInfoHolder#currentLoginUserInfo()
 	 */
 	@Nullable
-	protected CurrentLoginUserInfo getCurrentLoginUserInfo() {
+	public CurrentLoginUserInfo getCurrentLoginUserInfo() {
 		return CurrentLoginUserInfoHolder.currentLoginUserInfo();
 	}
 
@@ -68,8 +35,17 @@ public abstract class BaseCoreController extends AbstractSpringMvcController {
 	 * @see CurrentLoginUserInfoHolder#getCurrentLoginUser()
 	 */
 	@Nullable
-	protected User getCurrentLoginUser() {
+	public User getCurrentLoginUser() {
 		return CurrentLoginUserInfoHolder.getCurrentLoginUser();
+	}
+	
+	/**
+	 * @return 当前登录/请求人用户信息
+	 * @see CurrentAuthUserInfoHolder#getCurrentLoginUserId()
+	 */
+	@Nullable
+	public String getCurrentLoginUserId() {
+		return CurrentAuthUserInfoHolder.getCurrentLoginUserId();
 	}
 
 	/**
@@ -77,7 +53,7 @@ public abstract class BaseCoreController extends AbstractSpringMvcController {
 	 * @see CurrentLoginUserInfoHolder#getCurrentLoginUsername()
 	 */
 	@Nullable
-	protected String getCurrentLoginUsername() {
+	public String getCurrentLoginUsername() {
 		return CurrentLoginUserInfoHolder.getCurrentLoginUsername();
 	}
 
@@ -86,7 +62,7 @@ public abstract class BaseCoreController extends AbstractSpringMvcController {
 	 * @see CurrentLoginUserInfoHolder#getCurrentLoginUserRealName()
 	 */
 	@Nullable
-	protected String getCurrentLoginUserRealName() {
+	public String getCurrentLoginUserRealName() {
 		return CurrentLoginUserInfoHolder.getCurrentLoginUserRealName();
 	}
 
@@ -95,7 +71,7 @@ public abstract class BaseCoreController extends AbstractSpringMvcController {
 	 * @see CurrentLoginUserInfoHolder#getCurrentLoginUserOrg()
 	 */
 	@Nullable
-	protected Org getCurrentLoginUserOrg() {
+	public Org getCurrentLoginUserOrg() {
 		return CurrentLoginUserInfoHolder.getCurrentLoginUserOrg();
 	}
 
@@ -104,7 +80,7 @@ public abstract class BaseCoreController extends AbstractSpringMvcController {
 	 * @see CurrentLoginUserInfoHolder#getCurrentLoginUserOrgId()
 	 */
 	@Nullable
-	protected String getCurrentLoginUserOrgId() {
+	public String getCurrentLoginUserOrgId() {
 		return CurrentLoginUserInfoHolder.getCurrentLoginUserOrgId();
 	}
 
@@ -113,7 +89,7 @@ public abstract class BaseCoreController extends AbstractSpringMvcController {
 	 * @see CurrentLoginUserInfoHolder#getCurrentLoginUserOrgNo()
 	 */
 	@Nullable
-	protected String getCurrentLoginUserOrgNo() {
+	public String getCurrentLoginUserOrgNo() {
 		return CurrentLoginUserInfoHolder.getCurrentLoginUserOrgNo();
 	}
 

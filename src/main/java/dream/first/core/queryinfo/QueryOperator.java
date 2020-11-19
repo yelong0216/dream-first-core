@@ -3,39 +3,48 @@
  */
 package dream.first.core.queryinfo;
 
+import dream.first.base.queryinfo.DFQueryOperator;
+
 /**
  * 前端传递查询条件字典
  * 
  * @since 1.0.0
+ * @see DFQueryOperator
  */
 public enum QueryOperator {
 
 	/** 包含 */
-	LIKE,
+	LIKE(DFQueryOperator.LIKE),
 	/** 不包含 */
-	NLIKE,
+	NLIKE(DFQueryOperator.NLIKE),
 	/** 等与 */
-	EQ,
+	EQ(DFQueryOperator.EQ),
 	/** 不等与 */
-	NEQ,
+	NEQ(DFQueryOperator.NEQ),
 	/** 为空 */
-	IS,
+	IS(DFQueryOperator.IS),
 	/** 不为空 */
-	ISN,
+	ISN(DFQueryOperator.ISN),
 	/** 开始于 */
-	STARTWITH,
+	STARTWITH(DFQueryOperator.STARTWITH),
 	/** 结束于 */
-	ENDWITH,
+	ENDWITH(DFQueryOperator.ENDWITH),
 	/** 不早于 */
-	GTE,
+	GTE(DFQueryOperator.GTE),
 	/** 不晚于 */
-	LTE,
+	LTE(DFQueryOperator.LTE),
 	/** 介于 */
-	BETWEEN,
+	BETWEEN(DFQueryOperator.BETWEEN),
 	/** 在范围内 */
-	IN,
+	IN(DFQueryOperator.IN),
 	/** 不在范围内 */
-	NIN;
+	NIN(DFQueryOperator.NIN);
+
+	public final DFQueryOperator dfQueryOperator;
+
+	private QueryOperator(DFQueryOperator dfQueryOperator) {
+		this.dfQueryOperator = dfQueryOperator;
+	}
 
 	/**
 	 * 解析queryOperator为QueryOperator对象。规则：如果queryOperator于QueryOperator常量名字相同

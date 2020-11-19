@@ -25,7 +25,7 @@ public class RSAUtils {
 
 	private static final String charSet = "UTF-8";
 
-	private static PrivateKey privateKey = null;
+	private static PrivateKey privateKey = null;	
 	private static PublicKey publicKey = null;
 	private static String jsPublicKey = null;
 

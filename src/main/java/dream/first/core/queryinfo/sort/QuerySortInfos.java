@@ -4,9 +4,10 @@
 package dream.first.core.queryinfo.sort;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.yelong.core.jdbc.sql.sort.support.Sort;
+
+import dream.first.base.queryinfo.sort.DFQuerySortInfos;
 
 /**
  * 排序工具类
@@ -23,7 +24,7 @@ public final class QuerySortInfos {
 	 * @return 排序信息
 	 */
 	public static Sort toSort(QuerySortInfo querySortInfo) {
-		return new Sort(querySortInfo.getSortField(), querySortInfo.getDirection());
+		return DFQuerySortInfos.toSort(querySortInfo);
 	}
 
 	/**
@@ -31,7 +32,7 @@ public final class QuerySortInfos {
 	 * @return 排序信息集合
 	 */
 	public static List<Sort> toSort(List<QuerySortInfo> querySortInfos) {
-		return querySortInfos.stream().map(x -> toSort(x)).collect(Collectors.toList());
+		return DFQuerySortInfos.toSort(querySortInfos);
 	}
 
 }

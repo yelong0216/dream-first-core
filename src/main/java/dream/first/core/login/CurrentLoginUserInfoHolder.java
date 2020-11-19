@@ -5,6 +5,7 @@ package dream.first.core.login;
 
 import org.yelong.core.annotation.Nullable;
 
+import dream.first.base.userauth.CurrentAuthUserInfoHolder;
 import dream.first.core.platform.org.model.Org;
 import dream.first.core.platform.user.model.User;
 
@@ -18,15 +19,13 @@ public final class CurrentLoginUserInfoHolder {
 	private CurrentLoginUserInfoHolder() {
 	}
 
-	private static final ThreadLocal<CurrentLoginUserInfo> CURRENT_LOGIN_USER_INFO = new ThreadLocal<>();
-
 	/**
 	 * 设置当前登录（请求）用户的信息
 	 * 
 	 * @param currentLoginUserInfo 当前登录（请求）用户的信息
 	 */
 	public static void setCurrentLoginUserInfo(CurrentLoginUserInfo currentLoginUserInfo) {
-		CURRENT_LOGIN_USER_INFO.set(currentLoginUserInfo);
+		CurrentAuthUserInfoHolder.setCurrentLoginUserInfo(currentLoginUserInfo);
 	}
 
 	/**
@@ -34,7 +33,7 @@ public final class CurrentLoginUserInfoHolder {
 	 */
 	@Nullable
 	public static CurrentLoginUserInfo currentLoginUserInfo() {
-		return CURRENT_LOGIN_USER_INFO.get();
+		return (CurrentLoginUserInfo) CurrentAuthUserInfoHolder.getCurrentLoginUserInfo();
 	}
 
 	/**

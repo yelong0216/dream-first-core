@@ -27,9 +27,9 @@ import org.yelong.http.client.DefaultHttpClient;
 import org.yelong.http.client.HttpClient;
 import org.yelong.support.orm.mybaits.mapper.MyBatisBaseDataBaseOperation;
 
+import dream.first.base.model.interceptor.ModifyModelInterceptor;
+import dream.first.base.model.interceptor.SaveModelInterceptor;
 import dream.first.core.handler.interceptor.DefaultInterceptorConfiguration;
-import dream.first.core.model.interceptor.ModifyModelServiceInterceptor;
-import dream.first.core.model.interceptor.SaveModelServiceInterceptor;
 import dream.first.core.model.service.DreamFirstModelService;
 import dream.first.core.model.service.DreamFirstModelServiceImpl;
 import dream.first.core.model.sql.DreamFirstSqlModelResolver;
@@ -84,8 +84,9 @@ public class DreamFirstCoreConfiguration {
 	 * @return 保存拦截器
 	 */
 	@Bean
-	public ModelServiceInterceptor saveModelServiceInterceptor() {
-		return new SaveModelServiceInterceptor();
+	@ConditionalOnMissingBean(SaveModelInterceptor.class)
+	public SaveModelInterceptor saveModelInterceptor() {
+		return new SaveModelInterceptor();
 	}
 
 	/**
@@ -94,8 +95,9 @@ public class DreamFirstCoreConfiguration {
 	 * @return 修改拦截器
 	 */
 	@Bean
-	public ModelServiceInterceptor modifyModelServiceInterceptor() {
-		return new ModifyModelServiceInterceptor();
+	@ConditionalOnMissingBean(ModifyModelInterceptor.class)
+	public ModifyModelInterceptor modifyModelInterceptor() {
+		return new ModifyModelInterceptor();
 	}
 
 	/**
